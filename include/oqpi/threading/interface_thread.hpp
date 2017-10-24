@@ -33,7 +33,7 @@ namespace oqpi { namespace itfc {
         using base_type                 = typename std::conditional<is_lean, thread_impl, _Layer<thread_impl>>::type;
         // The actual type
         using self_type                 = thread<thread_impl, _Layer>;
-        
+
     public:
         //------------------------------------------------------------------------------------------
         // Returns the number of hardware threads (logical cores)
@@ -113,7 +113,7 @@ namespace oqpi { namespace itfc {
         bool                joinable()                                  const   { return thread_impl::joinable();                    }
         void                join()                                              { return thread_impl::join();                        }
         void                detach()                                            { return thread_impl::detach();                      }
-                                        
+
         void                setCoreAffinityMask(core_affinity affinity)         { return thread_impl::setCoreAffinityMask(affinity); }
         core_affinity       getCoreAffinityMask()                       const   { return thread_impl::getCoreAffinityMask();         }
 

@@ -36,11 +36,11 @@ namespace oqpi {
 
     protected:
         // User interface
-        void notify()
+        void notify(int32_t count)
         {
-            std::lock_guard<std::mutex> lk(m);            
-            count_ += 1;
-            cv.notify_one();    
+            std::lock_guard<std::mutex> lk(m);
+            count_ += count;
+            cv.notify_one();
         }
 
         bool tryWait()
@@ -55,7 +55,7 @@ namespace oqpi {
 
         void wait() const
         {
-            std::unique_lock<std::mutex> lk(m);            
+            std::unique_lock<std::mutex> lk(m);
             cv.wait(lk, [this]{ return count_ > 0; });
             --count_;
         }

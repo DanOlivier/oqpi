@@ -11,7 +11,8 @@
 #include "oqpi/scheduling/sequence_group.hpp"
 #include "oqpi/parallel_algorithms/parallel_for.hpp"
 #include "oqpi/concurrent_queue.hpp"
-
+#include "oqpi/synchronization/semaphore.hpp"
+#include "oqpi/parallel_algorithms/simple_partitioner.hpp"
 
 namespace oqpi {
 
@@ -46,8 +47,8 @@ namespace oqpi {
         inline static void start_default_scheduler()
         {
             // Use the default thread and semaphore (without any layer)
-            using default_thread    = thread_interface<>;
-            using default_semaphore = semaphore_interface<>;
+            typedef thread_interface<> default_thread;
+            typedef semaphore_interface<> default_semaphore;
 
             auto config = oqpi::worker_config{};
             // Let the workers roam on all cores.

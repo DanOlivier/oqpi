@@ -10,6 +10,12 @@ foreach(file ${files})
     source_group("${folder}" FILES ${file})
 endforeach()
 
+function(AppendToVar var val)
+set("${var}" "${${var}} ${val}" PARENT_SCOPE)
+endfunction()
+
+AppendToVar(CMAKE_CXX_FLAGS "-std=c++17")
+
 # Add header-only library
 add_custom_target(oqpi SOURCES ${files})
 

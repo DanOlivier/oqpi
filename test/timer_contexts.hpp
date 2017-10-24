@@ -7,9 +7,10 @@
 
 int64_t query_performance_counter_aux()
 {
-    LARGE_INTEGER li;
-    QueryPerformanceCounter(&li);
-    return li.QuadPart;
+    //LARGE_INTEGER li;
+    //QueryPerformanceCounter(&li);
+    //return li.QuadPart;
+    return 0;
 }
 
 int64_t first_measure()
@@ -27,9 +28,10 @@ int64_t query_performance_counter()
 
 int64_t query_performance_frequency()
 {
-    LARGE_INTEGER li;
-    QueryPerformanceFrequency(&li);
-    return li.QuadPart;
+    //LARGE_INTEGER li;
+    //QueryPerformanceFrequency(&li);
+    //return li.QuadPart;
+    return 0;
 }
 
 double duration(int64_t s, int64_t e)

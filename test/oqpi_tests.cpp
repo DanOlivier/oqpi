@@ -70,9 +70,9 @@ void test_unit_task_result()
 {
     TEST_FUNC;
 
-    auto spTask = oqpi_tk::make_task("FibonacciReturnResult", fibonacci, gValue);
-    oqpi_tk::schedule_task(spTask);
-    std::cout << "Fibonacci(" << gValue << ") = " << spTask->waitForResult() << std::endl;
+    //auto spTask = oqpi_tk::make_task("FibonacciReturnResult", fibonacci, gValue);
+    //oqpi_tk::schedule_task(spTask);
+    //std::cout << "Fibonacci(" << gValue << ") = " << spTask->waitForResult() << std::endl;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -212,7 +212,7 @@ void test_parallel_for_each()
         "Aliquam ac volutpat turpis, ac placerat nisl."
     };
     const auto vecSize = int32_t(vec.size());
-    std::atomic<uint64_t> count = 0;
+    std::atomic<uint64_t> count(0);
 
     oqpi_tk::parallel_for_each("FibonacciParallelForEach", vec,
         [&count](const std::string &s)
@@ -225,6 +225,8 @@ void test_parallel_for_each()
         count += fibonacci(total);
     });
 }
+
+#include <algorithm>
 
 //--------------------------------------------------------------------------------------------------
 void test_partitioners()
